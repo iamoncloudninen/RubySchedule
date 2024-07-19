@@ -8,6 +8,7 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1 or /schedules/1.json
   def show
+    @schedule = Schedule.find(params[:id])
   end
 
   # GET /schedules/new
@@ -17,21 +18,19 @@ class SchedulesController < ApplicationController
 
   # GET /schedules/1/edit
   def edit
+    @schedule = Schedule.find(params[:id])
   end
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(schedule_params)
-
-    respond_to do |format|
+    @schedule = Schedule.new(params.require(:schedule).permit(:title, :startDate, :endDate, :allDay, :scheduleMemo))
       if @schedule.save
-        format.html { redirect_to schedule_url(@schedule), notice: "Schedule was successfully created." }
-        format.json { render :show, status: :created, location: @schedule }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
+        flash[:notice] = "予定を新規追加しました"
+        redirect_to :schedules
+       else
+        flash[:alert] = "予定の新規追加に失敗しました"
+        render "new"  
       end
-    end
   end
 
   # PATCH/PUT /schedules/1 or /schedules/1.json
