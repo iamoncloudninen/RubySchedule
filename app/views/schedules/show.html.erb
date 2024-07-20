@@ -1,29 +1,27 @@
+<%= render "shared/header" %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @schedule.title %>
-</p>
+<%= link_to '← 一覧に戻る', schedules_path %>
+<p class="newButton"><%= link_to '編集', edit_schedule_path(@schedule) %></p>
+<h2><%= @schedule.title %></h2>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @schedule.startDate %>
-</p>
+<table>
+  <tr>
+    <th>開始日</th>
+    <td><%= @schedule.startDate.to_s(:date_jp) %></td>
+  </tr>
+  <tr>
+    <th>終了日</th>
+    <td><%= @schedule.endDate.to_s(:date_jp) %></td>
+  </tr>
+  <tr>
+    <th>終日</th>
+    <td><%= allDayMethod(@schedule.allDay) %></td>
+  </tr>
+  <tr>
+    <th>スケジュールメモ</th>
+    <td><%= @schedule.scheduleMemo %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Enddate:</strong>
-  <%= @schedule.endDate %>
-</p>
 
-<p>
-  <strong>Allday:</strong>
-  <%= @schedule.allDay %>
-</p>
-
-<p>
-  <strong>Schedulememo:</strong>
-  <%= @schedule.scheduleMemo %>
-</p>
-
-<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
-<%= link_to 'Back', schedules_path %>
