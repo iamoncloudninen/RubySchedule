@@ -1,52 +1,30 @@
 body {
-  background-color: #fff;
-  color: #333;
-  margin: 33px; }
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
-
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px; }
+  background-color: #f0f0f0;
+  margin: 33px; 
+}
 
 a {
-  color: #000; }
-
-a:visited {
-  color: #666; }
-
-a:hover {
-  color: #fff;
-  background-color: #000; }
-
-th {
-  padding-bottom: 5px; }
-
-td {
-  padding: 0 5px 7px; }
-
-div.field,
-div.actions {
-  margin-bottom: 10px; }
+  color: blue;
+  text-decoration: none;
+}
 
 #notice {
-  color: green; }
+  color: green; 
+}
 
 .field_with_errors {
   padding: 2px;
   background-color: red;
-  display: table; }
+  display: table; 
+}
 
 #error_explanation {
   width: 450px;
   border: 2px solid red;
   padding: 7px 7px 0;
   margin-bottom: 20px;
-  background-color: #f0f0f0; }
+  background-color: #f0f0f0; 
+}
 
 #error_explanation h2 {
   text-align: left;
@@ -55,11 +33,52 @@ div.actions {
   font-size: 12px;
   margin: -7px -7px 0;
   background-color: #c00;
-  color: #fff; }
+  color: #fff; 
+}
 
 #error_explanation ul li {
   font-size: 12px;
-  list-style: square; }
+  list-style: square; 
+}
 
 label {
-  display: block; }
+  display: block; 
+}
+
+.firstTable {
+  width: 85%;
+  margin: auto;
+}
+
+.secondTable {
+  width: 85%;
+  margin: auto;
+}
+
+table th {
+  background-color: white;
+  padding: 10px 20px;
+}
+  
+table td {
+  background-color: white;
+  padding: 10px 20px;
+}
+
+.partial {
+  color: white;
+  background-color: navy;
+  text-align: center;
+  padding: 3px;
+}
+
+.newButton{
+  background-color: blue;
+  text-align: center;
+  width: 100px;
+  border-radius: 10px;
+}
+
+.newButton a {
+  color: white;
+}

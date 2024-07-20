@@ -1,7 +1,7 @@
 <%= form_with(model: schedule) do |form| %>
   <% if schedule.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(schedule.errors.count, "error") %> prohibited this schedule from being saved:</h2>
+      <h2>予定の新規追加に失敗しました</h2>
 
       <ul>
         <% schedule.errors.each do |error| %>
@@ -12,31 +12,31 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title ,"タイトル" %>
     <%= form.text_field :title %>
   </div>
 
   <div class="field">
-    <%= form.label :startDate %>
+    <%= form.label :startDate ,"開始日" %>
     <%= form.datetime_select :startDate %>
   </div>
 
   <div class="field">
-    <%= form.label :endDate %>
+    <%= form.label :endDate ,"終了日" %>
     <%= form.datetime_select :endDate %>
   </div>
 
   <div class="field">
-    <%= form.label :allDay %>
+    <%= form.label :allDay ,"終日の場合はチェックを入れてください" %>
     <%= form.check_box :allDay %>
   </div>
 
   <div class="field">
-    <%= form.label :scheduleMemo %>
+    <%= form.label :scheduleMemo ,"スケジュールメモ" %>
     <%= form.text_area :scheduleMemo %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "保存"%>
   </div>
 <% end %>

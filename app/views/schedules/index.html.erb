@@ -1,35 +1,40 @@
+<%= render "shared/header" %>
+
+<h3>予定一覧</h3>
+<p class="newButton"><%= link_to '新規追加', new_schedule_path %></p>
 <p id="notice"><%= notice %></p>
 
-<h1>Schedules</h1>
 
-<table>
+<table class="firstTable">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Startdate</th>
-      <th>Enddate</th>
-      <th>Allday</th>
-      <th>Schedulememo</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th>タイトル</th>
+      <th>開始日</th>
+      <th>終了日</th>
+      <th>終日</th>
+      <th>更新日時</th>
     </tr>
   </thead>
 
   <tbody>
     <% @schedules.each do |schedule| %>
       <tr>
+        <td><%= schedule.id %></td>
         <td><%= schedule.title %></td>
-        <td><%= schedule.startDate %></td>
-        <td><%= schedule.endDate %></td>
-        <td><%= schedule.allDay %></td>
-        <td><%= schedule.scheduleMemo %></td>
-        <td><%= link_to 'Show', schedule %></td>
-        <td><%= link_to 'Edit', edit_schedule_path(schedule) %></td>
-        <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= schedule.startDate.to_s(:date_jp) %></td>
+        <td><%= schedule.endDate.to_s(:date_jp) %></td>
+        <td><%= allDayMethod(schedule.allDay) %></td>
+        <td><%= schedule.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= link_to '詳細', schedule %></td>
+        <td><%= link_to '編集', edit_schedule_path(schedule) %></td>
+        <td><%= link_to '削除', schedule, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Schedule', new_schedule_path %>
+<table class="secondTable">
+  <th>予定合計<%= Schedule.count %>件</th>
+  <th>本日の日付 <%= Time.zone.today.to_s(:date_jp) %></th>
+</table>
