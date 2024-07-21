@@ -23,14 +23,18 @@ class SchedulesController < ApplicationController
 
   # POST /schedules or /schedules.json
   def create
-    @schedule = Schedule.new(params.require(:schedule).permit(:title, :startDate, :endDate, :allDay, :scheduleMemo))
+    if params[:schedule].present?
+      @schedule = Schedule.new(params.require(:schedule).permit(:title, :startDate, :endDate, :allDay, :scheduleMemo))
       if @schedule.save
         flash[:notice] = "予定を新規追加しました"
         redirect_to :schedules
-       else
+      else
         flash[:alert] = "予定の新規追加に失敗しました"
         render "new"  
       end
+    else
+      redirect_to :schedules
+    end
   end
 
   # PATCH/PUT /schedules/1 or /schedules/1.json
