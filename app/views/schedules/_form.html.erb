@@ -1,0 +1,42 @@
+<%= form_with(model: schedule) do |form| %>
+  <% if schedule.errors.any? %>
+    <div id="error_explanation">
+      <h2>以下の項目を確認してください</h2>
+
+      <ul>
+        <% schedule.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title ,"タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :startDate ,"開始日" %>
+    <%= form.datetime_field :startDate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :endDate ,"終了日" %>
+    <%= form.datetime_field :endDate %>
+  </div>
+
+  <div class="field">
+    <%= form.label :allDay ,"終日の場合はチェックを入れてください" %>
+    <%= form.check_box :allDay %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scheduleMemo ,"スケジュールメモ" %>
+    <%= form.text_area :scheduleMemo %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "保存"%>
+  </div>
+<% end %>
