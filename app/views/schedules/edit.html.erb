@@ -1,6 +1,11 @@
-<h1>Editing Schedule</h1>
+<%= render "shared/header" %>
+<h3>予定を編集してください</h3>
+
+<% if flash[:alert] %>
+<p class="alert"><%= flash[:alert] %></p>
+<% end %>
+
 
 <%= render 'form', schedule: @schedule %>
 
-<%= link_to 'Show', @schedule %> |
-<%= link_to 'Back', schedules_path %>
+<%= button_to 'キャンセル', schedules_path %>

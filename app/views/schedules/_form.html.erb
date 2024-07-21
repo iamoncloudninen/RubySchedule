@@ -1,7 +1,7 @@
 <%= form_with(model: schedule) do |form| %>
   <% if schedule.errors.any? %>
     <div id="error_explanation">
-      <h2>予定の新規追加に失敗しました</h2>
+      <h2>以下の項目を確認してください</h2>
 
       <ul>
         <% schedule.errors.each do |error| %>

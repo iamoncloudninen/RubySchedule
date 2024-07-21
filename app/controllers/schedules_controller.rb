@@ -35,26 +35,24 @@ class SchedulesController < ApplicationController
 
   # PATCH/PUT /schedules/1 or /schedules/1.json
   def update
-    respond_to do |format|
-      if @schedule.update(schedule_params)
-        format.html { redirect_to schedule_url(@schedule), notice: "Schedule was successfully updated." }
-        format.json { render :show, status: :ok, location: @schedule }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @schedule.errors, status: :unprocessable_entity }
-      end
-    end
+    @user = Schedule.find(params[:id])
+      if @schedule.update(params.require(:schedule).permit(:title, :startDate, :endDate, :allDay, :scheduleMemo))
+        flash[:notice] = "予定を更新しました"
+        redirect_to :schedules
+       else
+        flash[:alert] = "予定の更新に失敗しました"
+        render "edit"
+       end
   end
 
   # DELETE /schedules/1 or /schedules/1.json
   def destroy
-    @schedule.destroy
-
-    respond_to do |format|
-      format.html { redirect_to schedules_url, notice: "Schedule was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    @schedule = Schedule.find(params[:id])
+     @schedule.destroy
+     flash[:notice] = "予定を削除しました"
+     redirect_to :schedules
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
